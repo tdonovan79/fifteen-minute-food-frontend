@@ -1,0 +1,15 @@
+[
+    {
+        "name": "Catfish",
+        "price": 12
+    },
+    {
+        "name": "Steak and Potatoes",
+        "price": 30
+    },
+    {
+        "name": "Spagetti",
+        "price": 15
+    }
+
+]

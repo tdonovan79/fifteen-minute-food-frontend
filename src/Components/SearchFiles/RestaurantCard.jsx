@@ -1,8 +1,12 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 
 export default class RestaurantCard extends React.Component {
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1c641eb8a547545f1406cff8a0b439082720ed51
     state = {
         redirect: false
     }
@@ -20,36 +24,45 @@ export default class RestaurantCard extends React.Component {
         
         return (
             <div className="card-container" >
+
                 <div className="image">
                     <img src={restObj.image_url} alt={restObj.name} />
                 </div>
                 <div className="restaurant-name">
-                    {restObj.name}
+                    <p>{restObj.name}</p>
                 </div>
                 <div className="restaurant-category">
-                    {restObj.categories.title} 
-                </div> 
+                    <p>{restObj.categories.title} </p>
+                </div>
                 <div className="restaurant-price">
-                    {restObj.price} 
+                    <p>{restObj.price}</p>
                 </div>
                 <div className="restaurant-location">
-                    {restObj.location.address1} 
+                    <p>{restObj.location.address1}</p>
                 </div>
                 <div className="restaurant-rating">
-                    {restObj.rating}
+                    <p>{restObj.rating}</p>
                 </div>
                 <div className="restaurant-review-count">
-                    {restObj.review_count}
+                    <p>{restObj.review_count}</p>
                 </div>
                 <div className="restaurant-phone">
-                    {restObj.display_phone}
+                    <p>{restObj.display_phone}</p>
                 </div>
                 <div className="restaurant-transactions">
-                    {restObj.transactions}
+                    <p>{restObj.transactions}</p>
                 </div>
                 <div className="restaurant-boolean">
-                    {restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <h2>OPEN</h2> }
+                    <p>{restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <h2>OPEN</h2>}</p>
                 </div>
+                {
+                    this.state.redirect ?
+                        <Redirect push to='/restaurant' />
+                        :
+                        <p></p>
+                }
+                <button onClick={this.handleNav}>Go to Restaurant</button>
+
             </div>
         )
     }
