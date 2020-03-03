@@ -2,9 +2,13 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
 import Form from './Components/Form'
+import NavBar from './Components/NavBar'
 import { withRouter } from 'react-router-dom'
 import CartPage from './Orders/CartPage.js'
 import CheckOut from './Orders/CheckOut.js'
+import RestaurantCollection from './Components/RestaurantCollection'
+import Search from './Components/Search'
+
 
 class App extends React.Component {
     state = {
@@ -13,8 +17,11 @@ class App extends React.Component {
             id: 0
         },
         token: "",
+        searchTerm: [],
         itemsInCart: [{ id: 0, name: "burger", price: 12 }, { id: 1, name: "pizza", price: 45 }]
     }
+
+
     //delete item by id passed up from CartItem
     onDeleteItem = (itemId) => {
         let newItemList = this.state.itemsInCart.filter(item => {
@@ -46,6 +53,7 @@ class App extends React.Component {
             })
         });
     }
+
     handleResponse = (response) => {
         if (response.user) {
             localStorage.token = response.token
@@ -53,7 +61,8 @@ class App extends React.Component {
                 this.props.history.push("/profile")
             })
         }
-    }
+      }
+
     handleLoginSubmit = (logUser) => {
         console.log(logUser)
         fetch(`http://localhost:3000/login`, {
@@ -66,6 +75,7 @@ class App extends React.Component {
             .then(r => r.json())
             .then(this.handleResponse)
     }
+
     handleRegisterSubmit = (newUser) => {
         console.log(newUser)
         fetch(`http://localhost:3000/users`, {
@@ -122,5 +132,26 @@ class App extends React.Component {
             </div>
         );
     }
+  }
+
+
+  render() {
+    console.log(this.props)
+    return (
+      <div className="App">
+        <header className="App-header">
+          <NavBar/>
+          <Switch>
+            <Route path="/login" render={this.renderForm} />
+            <Route path="/register" render={this.renderForm} />
+            <Route path="/profile" render={this.renderProfile} />
+            <Route path="/cart" render={this.renderCart} />
+            {/* <Route render={ () => <p>Page not Found</p> } /> */}
+          </Switch>
+        </header>
+      </div>
+    );
+  }
 }
+
 export default withRouter(App);
