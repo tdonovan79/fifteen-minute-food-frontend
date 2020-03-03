@@ -9,14 +9,8 @@ export default class Form extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    console.log(this.props, this.state)
     this.props.handleSubmit(this.state)
-    .then(() => {
-      this.setState({
-        username: "",
-        password: ""
-      })
-      // 14/16 let us clear out our username/password if someone is logged in. Better user experience
-    })
   }
 
   handleChange = (e) => {
@@ -40,7 +34,5 @@ export default class Form extends React.Component {
         <input type="submit" value="Submit"/>
       </form>
     )
-
   }
-
 }
