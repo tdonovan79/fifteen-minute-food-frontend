@@ -1,10 +1,16 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 
 export default class RestaurantCard extends React.Component {
+
+    handleNav = () => {
+        this.props.selectRest(this.props.restaurant.id)
+        return <Redirect to='/restaurant'/>
+    }
+
     render() {
         //fill out with the rest of the restaurant info
         let restObj = this.props.restaurant
-        console.log(restObj)
         return (
             <div className="card-container" >
                 
@@ -38,6 +44,14 @@ export default class RestaurantCard extends React.Component {
                 <div className="restaurant-boolean">
                     <p>{restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <h2>OPEN</h2> }</p>
                 </div>
+                {/* <NavLink to={{
+                    pathname: `/restaurant`,
+                    restProps: {
+                        twelveInARoom: "in America"
+                    }
+                }}>Go to Restaurant</NavLink> */}
+                <button onClick= {this.handleNav}>Go to Restaurant</button>
+                
             </div>
         )
     }

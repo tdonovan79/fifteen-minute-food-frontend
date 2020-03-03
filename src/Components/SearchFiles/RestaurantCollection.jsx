@@ -6,7 +6,7 @@ export default class RestaurantCollection extends React.Component {
     render() {
 
         let arrayOfRestaurants = this.props.restaurants.map(restaurant => {
-            return <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+            return <RestaurantCard key={restaurant.id} restaurant={restaurant} selectRest={this.props.selectRest}/>
         })
         
         return (

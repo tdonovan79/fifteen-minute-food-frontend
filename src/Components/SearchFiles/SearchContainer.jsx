@@ -10,7 +10,7 @@ export default class SearchContainer extends React.Component {
         return (
             <div className="search-container">
                 <Search />
-                <RestaurantCollection restaurants={this.props.restaurants}/>
+                <RestaurantCollection restaurants={this.props.restaurants} selectRest={this.props.selectRest}/>
                 {/* <RestaurantCard restaurants={this.props.restaurants}/> */}
             </div>
         )

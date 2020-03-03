@@ -1,11 +1,12 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route} from 'react-router-dom'
 import './App.css';
 import FormContainer from './Containers/FormContainer.js'
 import NavBar from './Components/NavBar'
 import { withRouter } from 'react-router-dom'
 import CartContainer from './Containers/CartContainer.js'
 import CheckOutContainer from './Containers/CheckOutContainer.js'
+import RestaurantContainer from './Containers/RestaurantContainer.js'
 // import { Router, Route } from 'react-router';
 import SearchContainer from './Components/SearchFiles/SearchContainer.jsx'
 
@@ -17,8 +18,7 @@ class App extends React.Component {
             id: 0
         },
         token: "",
-        searchTerm: "",
-        restaurants: [],
+        selectedRest: "",
         itemsInCart: [{ id: 0, name: "burger", price: 12 }, { id: 1, name: "pizza", price: 45 }]
     }
 
@@ -47,12 +47,12 @@ class App extends React.Component {
         }
 
         fetch(`http://localhost:3000/yelp_api_adapter/search?term=${this.state.searchTerm}`)
-        .then(r => r.json())
-        .then(data => {
-            this.setState({
-                restaurants: data
-            })
-        });
+            .then(r => r.json())
+            .then(data => {
+                this.setState({
+                    restaurants: data
+                })
+            });
     }
 
     handleResponse = (response) => {
@@ -62,39 +62,39 @@ class App extends React.Component {
                 this.props.history.push("/profile")
             })
         }
-      }
-
-    handleLoginSubmit = (logUser) => {
-        console.log(logUser)
-        fetch(`http://localhost:3000/login`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(logUser)
-        })
-            .then(r => r.json())
-            .then(this.handleResponse)
     }
 
-    handleRegisterSubmit = (newUser) => {
-        console.log(newUser)
-        fetch(`http://localhost:3000/users`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(newUser)
-        })
-        fetch("http://localhost:3000/yelp_api_adapter/search")
-            .then(r => r.json())
-            .then((data) => {
-                this.setState({
-                    restaurants: data
-                })
-            });
-    }
-    
+    // handleLoginSubmit = (logUser) => {
+    //     console.log(logUser)
+    //     fetch(`http://localhost:3000/login`, {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(logUser)
+    //     })
+    //         .then(r => r.json())
+    //         .then(this.handleResponse)
+    // }
+
+    // handleRegisterSubmit = (newUser) => {
+    //     console.log(newUser)
+    //     fetch(`http://localhost:3000/users`, {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(newUser)
+    //     })
+    //     fetch("http://localhost:3000/yelp_api_adapter/search")
+    //         .then(r => r.json())
+    //         .then((data) => {
+    //             this.setState({
+    //                 restaurants: data
+    //             })
+    //         });
+    // }
+
 
     handleSearch = (string) => {
         this.setState({
@@ -102,24 +102,29 @@ class App extends React.Component {
         })
     }
 
+    //change selected restaurant
+    selectRest = newRestId => {
+        this.setState({
+            selectedRest: newRestId
+        })
+    }
+
     render() {
-        console.log(this.state.restaurants)
-        let filteredRestaurantList = this.state.restaurants.filter(restaurant => {
-            return restaurant.name.includes(this.state.searchTerm) || restaurant.categories.includes(this.state.searchTerm)
-        });
+        // let filteredRestaurantList = this.state.restaurants.filter(restaurant => {
+        //     return restaurant.name.includes(this.state.searchTerm) || restaurant.categories.includes(this.state.searchTerm)
+        // });
         return (
             <div className="App">
                 <NavBar />
                 <header className="App-header">
                     <Switch>
-                        <Route path="/login" render={() => <FormContainer/>} />
+                        <Route path="/login" render={() => <FormContainer />} />
                         {/* <Route path="/profile" render={this.renderProfile} /> */}
-                        <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart}/>} />
-                        <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart}/>}/>
-                        <Route path='/restaurants' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={this.state.restaurants}/>} />
+                        <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} />} />
+                        <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} />} />
+                        <Route path='/restaurants' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={this.state.restaurants} selectRest={this.selectRest}/>} />
+                        <Route path='/restaurant' render={() => <RestaurantContainer restId={this.state.selectedRest} />} />
                     </Switch>
-                    {/* <Search searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} />
-                    <RestaurantCollection restaurants={filteredRestaurantList} /> */}
                 </header>
 
             </div>
