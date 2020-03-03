@@ -7,13 +7,14 @@ const BASE_URL = 'http://localhost:3000'
 const CHARGES_URL = BASE_URL + '/charge_adapter'
 
 // => app component
-export default function Payment() {
+export default function Payment(props) {
 
-    const [price, setPrice] = useState(100)
+    // const [price, setPrice] = props.total
+    const price = props.total
 
-    const handlePrice = (event) => {
-        setPrice(event.target.value)
-    }
+    // const handlePrice = (event) => {
+    //     setPrice(props.total)
+    // }
 
     const onToken = (token) => {
 
@@ -36,14 +37,14 @@ export default function Payment() {
 
     return (
         <div>
-            <form>
-                <label>Price: </label>
-                <input
+            {/* <form> */}
+                {/* <p>Price: {price}</p> */}
+                {/* <input
                     type="number"
                     value={ price }
-                    onChange={ handlePrice }
+                    // onChange={ handlePrice }
                 />
-            </form>
+            </form> */}
 
             <StripeCheckout
                 token={onToken}
