@@ -5,6 +5,8 @@ import Form from './Components/Form'
 import { withRouter } from 'react-router-dom'
 import CartPage from './Orders/CartPage.js'
 import CheckOut from './Orders/CheckOut.js'
+import RestaurantCollection from './Components/RestaurantCollection'
+import Search from './Components/Search'
 
 class App extends React.Component {
     state = {
@@ -13,6 +15,7 @@ class App extends React.Component {
             id: 0
         },
         token: "",
+        searchTerm: [],
         itemsInCart: [{ id: 0, name: "burger", price: 12 }, { id: 1, name: "pizza", price: 45 }]
     }
     //delete item by id passed up from CartItem
