@@ -19,7 +19,7 @@ class App extends React.Component {
         },
         token: "",
         selectedRest: "",
-        itemsInCart: [{ id: 0, name: "burger", price: 12 }, { id: 1, name: "pizza", price: 45 }]
+        itemsInCart: []
     }
 
 
@@ -108,6 +108,12 @@ class App extends React.Component {
             selectedRest: newRestId
         })
     }
+    //adds item to cart
+    addItemToCart = newItem => {
+        this.setState({
+            itemsInCart: [...this.state.itemsInCart, newItem]
+        })
+    }
 
     render() {
         // let filteredRestaurantList = this.state.restaurants.filter(restaurant => {
@@ -123,7 +129,7 @@ class App extends React.Component {
                         <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} />} />
                         <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} />} />
                         <Route path='/search' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={this.state.restaurants} selectRest={this.selectRest}/>} />
-                        <Route path='/restaurant' render={() => <RestaurantContainer restId={this.state.selectedRest} />} />
+                        <Route path='/restaurant' render={() => <RestaurantContainer restId={this.state.selectedRest} addItemToCart={this.addItemToCart}/>} />
                     </Switch>
                 </header>
 
