@@ -9,13 +9,9 @@
     "dotenv": "^8.2.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-<<<<<<< HEAD
-    "react-scripts": "3.4.0",
-    "react-stripe-checkout": "^2.6.3"
-=======
+    "react-stripe-checkout": "^2.6.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"
->>>>>>> 7d6cf320345bc0e4b0c6fb0ff886442f52ad3738
   },
   "scripts": {
     "start": "react-scripts start",
