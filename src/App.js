@@ -17,7 +17,8 @@ class App extends React.Component {
             id: 0
         },
         token: "",
-        searchTerm: [],
+        searchTerm: "",
+        restaurants: [],
         itemsInCart: [{ id: 0, name: "burger", price: 12 }, { id: 1, name: "pizza", price: 45 }]
     }
 
