@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 import CartContainer from './Containers/CartContainer.js'
 import CheckOutContainer from './Containers/CheckOutContainer.js'
 // import { Router, Route } from 'react-router';
-import SearchContainer from './Components/SearchFiles'
+import SearchContainer from './Components/SearchFiles/SearchContainer.jsx'
 
 
 class App extends React.Component {
@@ -116,7 +116,7 @@ class App extends React.Component {
                         {/* <Route path="/profile" render={this.renderProfile} /> */}
                         <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart}/>} />
                         <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart}/>}/>
-                        <Route path='/restaurants' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={filteredRestaurantList}/>} />
+                        <Route path='/restaurants' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={this.state.restaurants}/>} />
                     </Switch>
                     {/* <Search searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} />
                     <RestaurantCollection restaurants={filteredRestaurantList} /> */}
