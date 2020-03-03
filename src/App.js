@@ -119,6 +119,7 @@ class App extends React.Component {
             <div className="App">
                 <header className="App-header">
                     <Switch>
+                        <NavBar/>
                         <Route path="/login" render={this.renderForm} />
                         <Route path="/register" render={this.renderForm} />
                         <Route path="/profile" render={this.renderProfile} />
@@ -133,25 +134,5 @@ class App extends React.Component {
         );
     }
   }
-
-
-  render() {
-    console.log(this.props)
-    return (
-      <div className="App">
-        <header className="App-header">
-          <NavBar/>
-          <Switch>
-            <Route path="/login" render={this.renderForm} />
-            <Route path="/register" render={this.renderForm} />
-            <Route path="/profile" render={this.renderProfile} />
-            <Route path="/cart" render={this.renderCart} />
-            {/* <Route render={ () => <p>Page not Found</p> } /> */}
-          </Switch>
-        </header>
-      </div>
-    );
-  }
-}
 
 export default withRouter(App);
