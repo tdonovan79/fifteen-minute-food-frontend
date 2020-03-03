@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # register a user
-  resources :users
+  resources :users, only: [:create]
   # login custom route
   post "/login", to: "users#login"
 

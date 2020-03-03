@@ -1,0 +1,2 @@
+module ChargeAdapterHelper
+end

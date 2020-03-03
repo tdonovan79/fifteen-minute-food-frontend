@@ -1,0 +1,2 @@
+module YelpApiAdapterHelper
+end

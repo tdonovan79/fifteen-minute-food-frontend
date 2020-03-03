@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
 
   def encode_token(payload)
     # payload => { beef: 'steak' }
@@ -38,5 +38,6 @@ class ApplicationController < ActionController::API
   def authorized
     render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
   end
+
 
 end
