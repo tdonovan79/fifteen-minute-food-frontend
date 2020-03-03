@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Payment from '../Payment.js'
+import Payment from '../CheckoutComponents/Payment.js'
 
 
-export default class CheckOut extends Component {
+export default class CheckOutContainer extends Component {
     //return sum of prices all items in cart
     findSubtotal = () => {
         return this.props.itemsInCart.reduce((a, b) => a + (b['price'] || 0), 0).toFixed(2)
