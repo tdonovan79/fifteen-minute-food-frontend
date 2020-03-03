@@ -26,13 +26,12 @@ class App extends React.Component {
     //delete item by id passed up from CartItem
     onDeleteItem = (itemId) => {
         let newItemList = this.state.itemsInCart.filter(item => {
-            return item.id != itemId
+            return item.id !== itemId
         })
         this.setState({
             itemsInCart: newItemList
         })
     }
-
 
 
     componentDidMount() {
@@ -55,6 +54,7 @@ class App extends React.Component {
         });
     }
 
+
     handleResponse = (response) => {
         if (response.user) {
             localStorage.token = response.token
@@ -63,6 +63,7 @@ class App extends React.Component {
             })
         }
       }
+
 
     handleLoginSubmit = (logUser) => {
         console.log(logUser)
@@ -76,6 +77,7 @@ class App extends React.Component {
             .then(r => r.json())
             .then(this.handleResponse)
     }
+
 
     handleRegisterSubmit = (newUser) => {
         console.log(newUser)
@@ -137,3 +139,7 @@ class App extends React.Component {
   }
 
 export default withRouter(App);
+
+
+
+
