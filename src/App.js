@@ -3,14 +3,22 @@ import { Switch, Route } from 'react-router-dom'
 import './App.css';
 import Form from './Components/Form'
 import { withRouter } from 'react-router-dom'
+import Search from './Components/Search'
+import RestaurantCollection from './Components/RestaurantCollection'
+
 class App extends React.Component {
     state = {
         user: {
             username: "",
             id: 0
         },
-        token: ""
+        token: "",
+        searchTerm: "",
+        restaurants: []
     }
+
+   
+
     componentDidMount() {
         if (localStorage.token) {
             fetch(`http://localhost:4000/persist`, {
@@ -21,6 +29,14 @@ class App extends React.Component {
                 .then(r => r.json())
                 .then(this.handleResponse)
         }
+
+        fetch("http://localhost:3000/yelp_api_adapter/search")
+        .then(r => r.json())
+        .then((data) => {
+            this.setState({
+                restaurants: data
+            })
+        });
     }
     handleResponse = (response) => {
         if (response.user) {
@@ -54,6 +70,12 @@ class App extends React.Component {
             .then(r => r.json())
             .then(this.handleResponse)
     }
+
+    handleSearch = (string) => {
+        this.setState({
+            searchTerm: string
+        })
+    }
     renderForm = (route) => {
         if (route.location.pathname === "/login") {
             return <Form formName="Login Form" handleSubmit={this.handleLoginSubmit} />
@@ -62,7 +84,11 @@ class App extends React.Component {
         }
     }
     render() {
-        console.log(this.props)
+        console.log(this.state.restaurants)
+        let filteredRestaurantList = this.state.restaurants.filter(restaurant => {
+            return restaurant.name.includes(this.state.searchTerm) || restaurant.categories.includes(this.state.searchTerm)
+        }) ;
+        
         return (
             <div className="App">
                 <header className="App-header">
@@ -71,6 +97,8 @@ class App extends React.Component {
                         <Route path="/register" render={this.renderForm} />
                         <Route path="/profile" render={this.renderProfile} />
                     </Switch>
+                    <Search searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} />
+                    <RestaurantCollection restaurants={filteredRestaurantList} />
                 </header>
             </div>
         );
