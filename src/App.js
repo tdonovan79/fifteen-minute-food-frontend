@@ -122,7 +122,7 @@ class App extends React.Component {
                         {/* <Route path="/profile" render={this.renderProfile} /> */}
                         <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} />} />
                         <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} />} />
-                        <Route path='/restaurants' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={this.state.restaurants} selectRest={this.selectRest}/>} />
+                        <Route path='/search' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={this.state.restaurants} selectRest={this.selectRest}/>} />
                         <Route path='/restaurant' render={() => <RestaurantContainer restId={this.state.selectedRest} />} />
                     </Switch>
                 </header>

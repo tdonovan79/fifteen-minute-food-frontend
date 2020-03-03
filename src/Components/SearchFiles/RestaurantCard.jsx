@@ -2,10 +2,15 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 export default class RestaurantCard extends React.Component {
+    state = {
+        redirect: false
+    }
 
     handleNav = () => {
         this.props.selectRest(this.props.restaurant.id)
-        return <Redirect to='/restaurant'/>
+        this.setState({
+            redirect: true
+        })
     }
 
     render() {
@@ -13,7 +18,7 @@ export default class RestaurantCard extends React.Component {
         let restObj = this.props.restaurant
         return (
             <div className="card-container" >
-                
+
                 <div className="image">
                     <img src={restObj.image_url} alt={restObj.name} />
                 </div>
@@ -22,7 +27,7 @@ export default class RestaurantCard extends React.Component {
                 </div>
                 <div className="restaurant-category">
                     <p>{restObj.categories.title} </p>
-                </div> 
+                </div>
                 <div className="restaurant-price">
                     <p>{restObj.price}</p>
                 </div>
@@ -42,16 +47,16 @@ export default class RestaurantCard extends React.Component {
                     <p>{restObj.transactions}</p>
                 </div>
                 <div className="restaurant-boolean">
-                    <p>{restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <h2>OPEN</h2> }</p>
+                    <p>{restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <h2>OPEN</h2>}</p>
                 </div>
-                {/* <NavLink to={{
-                    pathname: `/restaurant`,
-                    restProps: {
-                        twelveInARoom: "in America"
-                    }
-                }}>Go to Restaurant</NavLink> */}
-                <button onClick= {this.handleNav}>Go to Restaurant</button>
-                
+                {
+                    this.state.redirect ?
+                        <Redirect push to='/restaurant' />
+                        :
+                        <p></p>
+                }
+                <button onClick={this.handleNav}>Go to Restaurant</button>
+
             </div>
         )
     }
