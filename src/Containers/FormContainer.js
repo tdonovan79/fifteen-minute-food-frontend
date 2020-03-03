@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom'
 
 export default class FormContainer extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        redirect: false,
+        token: ""
     }
     //controlled form
     handleChange = (e) => {
@@ -15,8 +18,25 @@ export default class FormContainer extends Component {
         })
     }
     //on submit auth user in backend
-    handleSubmit = (e) => {
-        e.preventDefault()
+    // handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     console.log(this.state)
+    //     fetch(`http://localhost:3000/login`, {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(this.state)
+    //     })
+    //         .then(r => r.json())
+    //         .then(this.handleResponse)
+    // }
+
+
+
+
+    handleLoginSubmit = (logUser) => {
+        logUser.preventDefault()
         console.log(this.state)
         fetch(`http://localhost:3000/login`, {
             method: "POST",
@@ -28,21 +48,49 @@ export default class FormContainer extends Component {
             .then(r => r.json())
             .then(this.handleResponse)
     }
+
+
+    handleRegisterSubmit = (newUser) => {
+        newUser.preventDefault()
+        console.log(this.state)
+        fetch(`http://localhost:3000/users`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then(r => r.json())
+        .then(this.handleResponse)
+    }
+
+
+
     //on response set page to profile page
     handleResponse = (response) => {
         if (response.user) {
             localStorage.token = response.token
-            this.setState(response, () => {
-                this.props.history.push("/profile")
+            this.props.handleCurrentUser(this.state.username)
+            this.setState({
+                username: this.state.username,
+                password: this.state.password,
+                token: response.token,
+                redirect: true
             })
+            console.log(this.state)
         }
+        else {
+            alert(response.error)
+          }
     }
+
     render() {
         // let { formName } = this.props
         let { username, password } = this.state
-
+    
         return (
-            <form onSubmit={this.handleSubmit}>
+            <div>
+            <form onSubmit={this.handleLoginSubmit} >
                 <h1>Login</h1>
                 <label htmlFor="username">Username:</label>
                 <input type="text" name="username" value={username} onChange={this.handleChange} />
@@ -50,6 +98,21 @@ export default class FormContainer extends Component {
                 <input type="password" name="password" value={password} onChange={this.handleChange} />
                 <input type="submit" value="Submit" />
             </form>
+            <form onSubmit={this.handleRegisterSubmit} >
+              <h1>Register</h1>
+              <label htmlFor="username">Username:</label>
+              <input type="text" name="username" value={username} onChange={this.handleChange} />
+              <label htmlFor="password">Password:</label>
+              <input type="password" name="password" value={password} onChange={this.handleChange} />
+              <input type="submit" value="Submit" />
+            </form>
+            {
+                this.state.redirect ? 
+                <Redirect push to="/profile" />
+                :
+                <p></p>
+            }
+            </div>
         )
     }
 }
