@@ -1,9 +1,23 @@
 import React from 'react'
 
 export default class RestaurantCard extends React.Component {
+
+
+    state = {
+        redirect: false
+    }
+
+    handleNav = () => {
+        this.props.selectRest(this.props.restaurant.id)
+        this.setState({
+            redirect: true
+        })
+    }
+
     render() {
         //fill out with the rest of the restaurant info
         let restObj = this.props.restaurant
+        
         return (
             <div className="card-container" >
                 <div className="image">
@@ -13,13 +27,13 @@ export default class RestaurantCard extends React.Component {
                     {restObj.name}
                 </div>
                 <div className="restaurant-category">
-                    {restObj.category} 
+                    {restObj.categories.title} 
                 </div> 
                 <div className="restaurant-price">
-                    {restObj.price}
+                    {restObj.price} 
                 </div>
                 <div className="restaurant-location">
-                    {restObj.location}
+                    {restObj.location.address1} 
                 </div>
                 <div className="restaurant-rating">
                     {restObj.rating}
