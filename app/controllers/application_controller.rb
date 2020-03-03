@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API
 
   def encode_token(payload)
     # payload => { beef: 'steak' }

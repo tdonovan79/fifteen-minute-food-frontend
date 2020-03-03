@@ -10,6 +10,7 @@ class YelpApiAdapterController < ApplicationController
             render :json => YelpApiAdapter.search(term, location)
         end
     end
+    
     #render json of reviews of a restaurant
     def reviews
         business_id = yelp_params(:business_id)["business_id"]
