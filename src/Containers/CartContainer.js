@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
-import CartItem from './CartItem'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useRouteMatch
-  } from "react-router-dom";
+import CartItem from '../CartComponents/CartItem.js'
+import {NavLink} from 'react-router-dom'
 
-export default class Cart extends Component {
+export default class CartContainer extends Component {
     state = {
 
     }
@@ -37,10 +31,7 @@ export default class Cart extends Component {
                     <p>Tax: 8.875%</p>
                     <p>Total: ${this.findTotal()}</p>
                 </div>
-                {/* <button className="checkout">Checkout</button> */}
-                <Router>
-                    <Link to = {'/checkout'}><button>Checkout</button></Link>
-                </Router>
+                <NavLink to="/checkout">Checkout</NavLink>
             </div>
         )
     }
