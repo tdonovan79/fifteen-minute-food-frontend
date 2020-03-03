@@ -6,6 +6,7 @@ import NavBar from './Components/NavBar'
 import { withRouter } from 'react-router-dom'
 import CartContainer from './Containers/CartContainer.js'
 import CheckOutContainer from './Containers/CheckOutContainer.js'
+import ProfileContainer from './Containers/ProfileContainer.js'
 // import { Router, Route } from 'react-router';
 import SearchContainer from './Components/SearchFiles/SearchContainer.jsx'
 
@@ -62,41 +63,17 @@ class App extends React.Component {
                 this.props.history.push("/profile")
             })
         }
+        else {
+            alert(response.error)
+          }
       }
 
-
-    handleLoginSubmit = (logUser) => {
-        console.log(logUser)
-        fetch(`http://localhost:3000/login`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(logUser)
+      handleCurrentUser = (newUsername) => {
+          console.log(newUsername)
+        this.setState({
+            username: newUsername
         })
-            .then(r => r.json())
-            .then(this.handleResponse)
     }
-
-
-    handleRegisterSubmit = (newUser) => {
-        console.log(newUser)
-        fetch(`http://localhost:3000/users`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(newUser)
-        })
-        fetch("http://localhost:3000/yelp_api_adapter/search")
-            .then(r => r.json())
-            .then((data) => {
-                this.setState({
-                    restaurants: data
-                })
-            });
-    }
-    
 
     handleSearch = (string) => {
         this.setState({
@@ -114,8 +91,9 @@ class App extends React.Component {
                 <NavBar />
                 <header className="App-header">
                     <Switch>
-                        <Route path="/login" render={() => <FormContainer/>} />
-                        {/* <Route path="/profile" render={this.renderProfile} /> */}
+                        <Route path="/login" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser}/>} />
+                        <Route path="/register" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser}/>} />
+                        <Route path="/profile"  render={() => <ProfileContainer username={this.state.username}/>} />
                         <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart}/>} />
                         <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart}/>}/>
                         <Route path='/restaurants' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={this.state.restaurants}/>} />
