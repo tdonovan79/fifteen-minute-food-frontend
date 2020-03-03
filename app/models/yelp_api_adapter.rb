@@ -8,12 +8,13 @@ class YelpApiAdapter < ApplicationRecord
     API_KEY = ENV["YELP_KEY"]
     SEARCH_LIMIT = 5
     #search for resturaunts. first argument serach term second is location
-    def self.search(term, location="new york")
+    def self.search(term, location="new york", categories="bars,restaurants")
         url = "#{API_HOST}#{SEARCH_PATH}"
         params = {
             term: term,
             location: location,
-            limit: SEARCH_LIMIT
+            limit: SEARCH_LIMIT,
+            categories: categories
         }
         response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
         response.parse["businesses"]
