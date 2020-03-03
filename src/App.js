@@ -1,11 +1,13 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route} from 'react-router-dom'
 import './App.css';
+import { Switch, Route} from 'react-router-dom'
 import FormContainer from './Containers/FormContainer.js'
 import NavBar from './Components/NavBar'
 import { withRouter } from 'react-router-dom'
 import CartContainer from './Containers/CartContainer.js'
 import CheckOutContainer from './Containers/CheckOutContainer.js'
+import RestaurantContainer from './Containers/RestaurantContainer.js'
 // import { Router, Route } from 'react-router';
 import SearchContainer from './Components/SearchFiles/SearchContainer.jsx'
 
@@ -17,9 +19,8 @@ class App extends React.Component {
             id: 0
         },
         token: "",
-        searchTerm: "",
-        restaurants: [],
-        itemsInCart: [{ id: 0, name: "burger", price: 12 }, { id: 1, name: "pizza", price: 45 }]
+        selectedRest: "",
+        itemsInCart: []
     }
 
 
@@ -46,12 +47,12 @@ class App extends React.Component {
         }
 
         fetch(`http://localhost:3000/yelp_api_adapter/search?term=${this.state.searchTerm}`)
-        .then(r => r.json())
-        .then(data => {
-            this.setState({
-                restaurants: data
-            })
-        });
+            .then(r => r.json())
+            .then(data => {
+                this.setState({
+                    restaurants: data
+                })
+            });
     }
 
 
@@ -62,6 +63,7 @@ class App extends React.Component {
                 this.props.history.push("/profile")
             })
         }
+<<<<<<< HEAD
       }
 
 
@@ -79,6 +81,11 @@ class App extends React.Component {
     }
 
 
+=======
+    }
+
+<<<<<<< HEAD
+>>>>>>> 7bf191668ac5d6e747ed04d7ea9b3dab16988b3e
     handleRegisterSubmit = (newUser) => {
         console.log(newUser)
         fetch(`http://localhost:3000/users`, {
@@ -88,43 +95,113 @@ class App extends React.Component {
             },
             body: JSON.stringify(newUser)
         })
-        fetch("http://localhost:3000/yelp_api_adapter/search")
-            .then(r => r.json())
-            .then((data) => {
-                this.setState({
-                    restaurants: data
-                })
-            });
+        // fetch("http://localhost:3000/yelp_api_adapter/search")
+        //     .then(r => r.json())
+        //     .then((data) => {
+        //         this.setState({
+        //             restaurants: data
+        //         })
+        //     });
     }
     
+=======
+    // handleLoginSubmit = (logUser) => {
+    //     console.log(logUser)
+    //     fetch(`http://localhost:3000/login`, {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(logUser)
+    //     })
+    //         .then(r => r.json())
+    //         .then(this.handleResponse)
+    // }
 
-    handleSearch = (string) => {
+    // handleRegisterSubmit = (newUser) => {
+    //     console.log(newUser)
+    //     fetch(`http://localhost:3000/users`, {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(newUser)
+    //     })
+    //     fetch("http://localhost:3000/yelp_api_adapter/search")
+    //         .then(r => r.json())
+    //         .then((data) => {
+    //             this.setState({
+    //                 restaurants: data
+    //             })
+    //         });
+    // }
+
+>>>>>>> 1c641eb8a547545f1406cff8a0b439082720ed51
+
+    // handleSearch = (string) => {
+    //     this.setState({
+    //         searchTerm: string
+    //     })
+    // }
+
+    //change selected restaurant
+    selectRest = newRestId => {
         this.setState({
-            searchTerm: string
+            selectedRest: newRestId
+        })
+    }
+    //adds item to cart
+    addItemToCart = newItem => {
+        this.setState({
+            itemsInCart: [...this.state.itemsInCart, newItem]
         })
     }
 
     render() {
-        console.log(this.state.restaurants)
-        let filteredRestaurantList = this.state.restaurants.filter(restaurant => {
-            return restaurant.name.includes(this.state.searchTerm) || restaurant.categories.includes(this.state.searchTerm)
-        });
+<<<<<<< HEAD
+     
+        // let filteredRestaurantList = this.state.restaurants.filter(restaurant => {
+            // return restaurant.name.includes(this.state.searchTerm) || restaurant.categories.includes(this.state.searchTerm)
+        // });
+        return (
+        <div className="App">
+            <NavBar />
+            <header className="App-header">
+                <Switch>
+                    <Route path="/login" render={() => <FormContainer />} />
+                    {/* <Route path="/profile" render={this.renderProfile} /> */}
+                    <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} />} />
+                    <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} />} />
+                    <Route path='/restaurants' render={() => <SearchContainer/>} />
+                </Switch>
+            </header>
+
+        </div>
+                
+                       
+                
+                   
+
+=======
+        // let filteredRestaurantList = this.state.restaurants.filter(restaurant => {
+        //     return restaurant.name.includes(this.state.searchTerm) || restaurant.categories.includes(this.state.searchTerm)
+        // });
         return (
             <div className="App">
                 <NavBar />
                 <header className="App-header">
                     <Switch>
-                        <Route path="/login" render={() => <FormContainer/>} />
+                        <Route path="/login" render={() => <FormContainer />} />
                         {/* <Route path="/profile" render={this.renderProfile} /> */}
-                        <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart}/>} />
-                        <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart}/>}/>
-                        <Route path='/restaurants' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={this.state.restaurants}/>} />
+                        <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} />} />
+                        <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} />} />
+                        <Route path='/search' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={this.state.restaurants} selectRest={this.selectRest}/>} />
+                        <Route path='/restaurant' render={() => <RestaurantContainer restId={this.state.selectedRest} addItemToCart={this.addItemToCart}/>} />
                     </Switch>
-                    {/* <Search searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} />
-                    <RestaurantCollection restaurants={filteredRestaurantList} /> */}
                 </header>
 
             </div>
+>>>>>>> 1c641eb8a547545f1406cff8a0b439082720ed51
         );
     }
 }
