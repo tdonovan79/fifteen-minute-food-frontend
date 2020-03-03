@@ -14,7 +14,6 @@ before_action :authorized, only: [:persist]
 
 
   def login
-    byebug
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       wristband = encode_token({user_id: @user.id})
@@ -22,6 +21,7 @@ before_action :authorized, only: [:persist]
     else 
       render json: {error: "Thats not you!"} 
     end
+    console.log(@user, wristband)
   end
 
 
