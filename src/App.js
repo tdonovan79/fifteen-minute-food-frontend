@@ -6,8 +6,7 @@ import NavBar from './Components/NavBar'
 import { withRouter } from 'react-router-dom'
 import CartPage from './Orders/CartPage.js'
 import CheckOut from './Orders/CheckOut.js'
-import RestaurantCollection from './Components/RestaurantCollection'
-import Search from './Components/Search'
+import SearchContainer from './Components/SearchFiles';
 
 
 class App extends React.Component {
@@ -17,8 +16,7 @@ class App extends React.Component {
             id: 0
         },
         token: "",
-        searchTerm: "",
-        restaurants: [],
+        
         itemsInCart: [{ id: 0, name: "burger", price: 12 }, { id: 1, name: "pizza", price: 45 }]
     }
 
@@ -26,7 +24,7 @@ class App extends React.Component {
     //delete item by id passed up from CartItem
     onDeleteItem = (itemId) => {
         let newItemList = this.state.itemsInCart.filter(item => {
-            return item.id != itemId
+            return item.id !== itemId
         })
         this.setState({
             itemsInCart: newItemList
@@ -46,9 +44,9 @@ class App extends React.Component {
                 .then(this.handleResponse)
         }
 
-        fetch("http://localhost:3000/yelp_api_adapter/search")
+        fetch(`http://localhost:3000/yelp_api_adapter/search?term=${this.state.searchTerm}`)
         .then(r => r.json())
-        .then((data) => {
+        .then(data => {
             this.setState({
                 restaurants: data
             })
@@ -114,12 +112,13 @@ class App extends React.Component {
         console.log(this.state.restaurants)
         let filteredRestaurantList = this.state.restaurants.filter(restaurant => {
             return restaurant.name.includes(this.state.searchTerm) || restaurant.categories.includes(this.state.searchTerm)
-        }) ;
+        });
         
         return (
             <div className="App">
                 <header className="App-header">
                     <Switch>
+                        <NavBar />
                         <Route path="/login" render={this.renderForm} />
                         <Route path="/register" render={this.renderForm} />
                         <Route path="/profile" render={this.renderProfile} />
@@ -132,27 +131,8 @@ class App extends React.Component {
                 
             </div>
         );
-    }
-  }
-
-
-  render() {
-    console.log(this.props)
-    return (
-      <div className="App">
-        <header className="App-header">
-          <NavBar/>
-          <Switch>
-            <Route path="/login" render={this.renderForm} />
-            <Route path="/register" render={this.renderForm} />
-            <Route path="/profile" render={this.renderProfile} />
-            <Route path="/cart" render={this.renderCart} />
-            {/* <Route render={ () => <p>Page not Found</p> } /> */}
-          </Switch>
-        </header>
-      </div>
-    );
-  }
+    };
+  
 }
 
 export default withRouter(App);
