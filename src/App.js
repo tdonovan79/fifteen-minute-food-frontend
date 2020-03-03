@@ -18,7 +18,7 @@ class App extends React.Component {
         },
         token: "",
         searchTerm: "",
-        
+        restaurants: [],
         itemsInCart: [{ id: 0, name: "burger", price: 12 }, { id: 1, name: "pizza", price: 45 }]
     }
 
@@ -116,7 +116,7 @@ class App extends React.Component {
                         {/* <Route path="/profile" render={this.renderProfile} /> */}
                         <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart}/>} />
                         <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart}/>}/>
-                        <Route path='/restaurants' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch}/>} />
+                        <Route path='/restaurants' render={() => <SearchContainer searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} restaurants={filteredRestaurantList}/>} />
                     </Switch>
                     {/* <Search searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} />
                     <RestaurantCollection restaurants={filteredRestaurantList} /> */}
