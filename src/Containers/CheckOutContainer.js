@@ -18,11 +18,19 @@ export default class CheckOutContainer extends Component {
     //after payment processed save data to backend and redirect to confirmation
     afterPayment = () => {
         let saleData = {
-            resttaurant: this.props.selectRest,
-            items: this.props.itemsInCart
+            restaurant: {
+                name: this.props.selectRest.name,
+                location: this.props.selectRest.location,
+                category: this.props.selectRest.category,
+                phone_number: this.props.selectRest.phone_number,
+                address: this.props.selectRest.address,
+                image_url: this.props.selectRest.image_url
+            },
+            items: this.props.itemsInCart,
+            user: localStorage.username
         }
         //fetches
-        fetch('localhost:3000/sales', {
+        fetch('http://localhost:3000/sales', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

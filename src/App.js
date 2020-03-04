@@ -112,7 +112,7 @@ class App extends React.Component {
                         <Route path="/register" render={() => <RegisterFormContainer handleCurrentUser={this.handleCurrentUser} />} />
                         <Route path="/profile" render={() => <ProfileContainer username={localStorage.username} />} />
                         <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} selectRest={this.state.selectRest} />} />
-                        <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} selectRest={this.state.selectRest} clearCart={this.clearCart} />} />
+                        <Route path="/checkout" render={() => <CheckOutContainer  username={localStorage.username} itemsInCart={this.state.itemsInCart} selectRest={this.state.selectRest} clearCart={this.clearCart} />} />
                         <Route path='/search' render={() => <SearchContainer selectNewRest={this.selectNewRest} />} />
                         <Route path='/restaurant' render={() => <RestaurantContainer selectRest={this.state.selectRest} addItemToCart={this.addItemToCart} />} />
                         <Route path='/confirmation' render={() => <ConfirmationContainer selectRest={this.state.selectRest} selectRest={this.selectRest} itemsInCart={this.itemsInCart} />} />
