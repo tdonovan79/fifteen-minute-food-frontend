@@ -34,8 +34,12 @@ class SalesController < ApplicationController
         end
     end
 
-        
 
+    def last_order
+        sale = Sale.last 
+
+        render json: sale
+    end
     
 
         
