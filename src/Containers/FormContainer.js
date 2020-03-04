@@ -18,22 +18,6 @@ export default class FormContainer extends Component {
         })
     }
     //on submit auth user in backend
-    // handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     console.log(this.state)
-    //     fetch(`http://localhost:3000/login`, {
-    //         method: "POST",
-    //         headers: {
-    //             "content-type": "application/json"
-    //         },
-    //         body: JSON.stringify(this.state)
-    //     })
-    //         .then(r => r.json())
-    //         .then(this.handleResponse)
-    // }
-
-
-
 
     handleLoginSubmit = (logUser) => {
         logUser.preventDefault()
