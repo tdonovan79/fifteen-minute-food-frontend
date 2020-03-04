@@ -32,10 +32,10 @@ class App extends React.Component {
 
 
     //delete item by id passed up from CartItem
-    onDeleteItem = (itemId) => {
-        let newItemList = this.state.itemsInCart.filter(item => {
-            return item.id !== itemId
-        })
+    onDeleteItem = (itemName) => {
+        let deleteIndex = this.state.itemsInCart.findIndex(item => item.name === itemName)
+        let newItemList = this.state.itemsInCart.slice()
+        newItemList.splice(deleteIndex, 1)
         this.setState({
             itemsInCart: newItemList
         })
@@ -113,7 +113,7 @@ class App extends React.Component {
                         <Route path="/profile" render={() => <ProfileContainer username={localStorage.username} />} />
                         <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} selectRest={this.state.selectRest} />} />
                         <Route path="/checkout" render={() => <CheckOutContainer  username={localStorage.username} itemsInCart={this.state.itemsInCart} selectRest={this.state.selectRest} clearCart={this.clearCart} />} />
-                        <Route path='/search' render={() => <SearchContainer selectNewRest={this.selectNewRest} />} />
+                        <Route path='/search' render={() => <SearchContainer selectNewRest={this.selectNewRest} cartIsEmpty={this.state.itemsInCart.length === 0} selectRestName={this.state.selectRest.name}/>} />
                         <Route path='/restaurant' render={() => <RestaurantContainer selectRest={this.state.selectRest} addItemToCart={this.addItemToCart} />} />
                         <Route path='/confirmation' render={() => <ConfirmationContainer selectRest={this.state.selectRest} selectRest={this.selectRest} itemsInCart={this.itemsInCart} />} />
                     </Switch>

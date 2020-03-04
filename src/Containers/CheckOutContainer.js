@@ -38,8 +38,9 @@ export default class CheckOutContainer extends Component {
             body: JSON.stringify(saleData)
         })
             .then(r => r.json())
-            .then(() =>
+            .then(data =>
             {
+                console.log(data)
                 //clear cart
                 this.props.clearCart()
                 //redirect to confirmation page
@@ -50,7 +51,6 @@ export default class CheckOutContainer extends Component {
 
     }
     render() {
-        console.log(this.props.selectRest)
         return (
             <div>
                 <h1>Checkout</h1>
