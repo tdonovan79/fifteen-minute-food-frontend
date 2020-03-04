@@ -4,7 +4,7 @@ class CreateFoodItems < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :image_url
       t.string :price
-      t.integer :restaurant_id
+      t.integer :sale_id
       t.timestamps
     end
   end

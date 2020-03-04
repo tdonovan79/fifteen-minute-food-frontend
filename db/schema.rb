@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_025657) do
     t.string "name"
     t.string "image_url"
     t.string "price"
-    t.integer "restaurant_id"
+    t.integer "sale_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

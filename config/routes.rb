@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   # register a user
   resources :users, only: [:create]
+  resources :sales, only: [:create]
+  resources :food_items, only: [:create]
   # login custom route
   post "/login", to: "users#login"
+  
 
   # route to persist a user
   get "/persist", to: "users#persist"
