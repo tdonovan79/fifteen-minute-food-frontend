@@ -17,15 +17,32 @@ export default class CheckOutContainer extends Component {
     }
     //after payment processed save data to backend and redirect to confirmation
     afterPayment = () => {
+        let saleData = {
+            rest: this.props.selectRest,
+            items: this.props.itemsInCart
+        }
         //fetches
-        //clear cart
-        this.props.clearCart()
-        //redirect to confirmation page
-        this.setState({
-            redirect: true
+        fetch('localhost:3000/sales', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(saleData)
         })
+            .then(r => r.json())
+            .then(() =>
+            {
+                //clear cart
+                this.props.clearCart()
+                //redirect to confirmation page
+                this.setState({
+                    redirect: true
+                })
+            })
+
     }
     render() {
+        console.log(this.props.selectRest)
         return (
             <div>
                 <h1>Checkout</h1>
@@ -35,12 +52,12 @@ export default class CheckOutContainer extends Component {
                     <p>Tax: 8.875%</p>
                     <p>Total: ${this.findTotal()}</p>
                 </div>
-                <Payment total={this.findTotal()} afterPayment={this.afterPayment}/>
+                <Payment total={this.findTotal()} afterPayment={this.afterPayment} />
                 {
-                    this.state.redirect ? 
-                    <Redirect push to='/confirmation'/>
-                    :
-                    <p></p>
+                    this.state.redirect ?
+                        <Redirect push to='/confirmation' />
+                        :
+                        <p></p>
                 }
             </div>
         )

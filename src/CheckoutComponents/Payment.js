@@ -1,5 +1,5 @@
 // => imports
-import React, { useState } from 'react'
+import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 
 
@@ -9,7 +9,6 @@ const CHARGES_URL = BASE_URL + '/charge_adapter'
 
 // => app component
 export default function Payment(props) {
-    const [redirect, setRidirect ]= useState(false)
 
     const price = props.total
     const onToken = (token) => {
