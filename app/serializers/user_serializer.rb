@@ -3,5 +3,4 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :restaurants
   has_many :sales
-  has_many :food_items
 end
