@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # route to persist a user
   get "/persist", to: "users#persist"
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'yelp_api_adapter/search', :to => 'yelp_api_adapter#search'
   get 'yelp_api_adapter/reviews', :to => 'yelp_api_adapter#reviews'
