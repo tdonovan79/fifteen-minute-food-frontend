@@ -1,6 +1,7 @@
 class Sale < ApplicationRecord
     belongs_to :restaurant
     belongs_to :user
+<<<<<<< HEAD
     has_many :food_items
 
     def create_sale
@@ -12,4 +13,8 @@ class Sale < ApplicationRecord
     def sale_params
         params.permit(:restaurant_id, :user_id)
     end
+=======
+    
+    has_many :food_items
+>>>>>>> fif_backend_5
 end

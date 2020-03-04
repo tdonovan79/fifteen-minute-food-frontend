@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   # register a user
+<<<<<<< HEAD
   resources :users, only: [:create]
   resources :sales, only: [:create]
   resources :food_items, only: [:create]
   resources :restaurants, only: [:create]
+=======
+  resources :users, only: [:create, :index]
+>>>>>>> fif_backend_5
   # login custom route
   post "/login", to: "users#login"
   
