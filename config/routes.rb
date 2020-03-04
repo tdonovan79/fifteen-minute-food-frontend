@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   resources :sales, only: [:create]
   resources :food_items, only: [:create]
+  resources :restaurants, only: [:create]
   # login custom route
   post "/login", to: "users#login"
   

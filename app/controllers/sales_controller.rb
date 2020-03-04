@@ -1,25 +1,52 @@
 class SalesController < ApplicationController
-before_action :authorized, only: [:persist]
+    # before_action 
+    # :authorized, only: [:persist]
 
     def create
-        @sale = Sale.create(sale_params)
-        if @sale.valid?
-            wristband = encode_token({sale_id: @sale.id})
-            render json { sale: SaleSerializer.new(@sale), token: wristband }, status: 201
-        else
-            render json: { error: "Nope!"}
-        end
-    end
+        # byebug
+       if User.all.find_by(username: sale_params[:user])
+            @user = User.all.find_by(username: sale_params[:user])
+            if  Restaurant.all.find_by(address: sale_params[:restaurant][:address])
+                @restaurant = Restaurant.all.find_by(address: sale_params[:restaurant][:address])
+                @sale = Sale.create(user: @user, restaurant: @restaurant)
 
-    def persist
-        wristband = encode_token({sale_id: @sale.id})
-        render json: { sale: SaleSerializer.new(@sale), token: wristband }
+                params[:items].each do |item| 
+                    FoodItem.create(name: item[:name], price: item[:price], sale: @sale)
+                end
+                
+            else 
+                @restaurant = Restaurant.create(sale_params[:restaurant])
+                @sale = Sale.create(user: @user, restaurant: @restaurant)
+
+                params[:items].each do |item| 
+                    FoodItem.create(name: item[:name], price: item[:price], sale: @sale)
+                end
+            end
+        else
+            render json: { error: "NOPE" }
+        end
+
     end
+        
+
+    
+
+        
+
+    # def persist
+    #     wristband = encode_token({sale_id: @sale.id})
+    #     render json: { sale: SaleSerializer.new(@sale), token: wristband }
+    # end
 
     private
 
+    # def restaurant_params
+    #     params.permit(:name, :location, :category, :phone_number, :address, :image_url)
+    # end
+
     def sale_params
-        params.permit(:restaurant_id, :food_id)
+        params.permit(:user, restaurant:[:name, :location, :category, :phone_number, :address, :image_url], items: [])
     end
+
 
 end
