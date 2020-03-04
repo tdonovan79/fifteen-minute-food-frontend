@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
+import RegisterFormContainer from './Containers/RegisterFormContainer.js'
 import FormContainer from './Containers/FormContainer.js'
 import NavBar from './Components/NavBar'
 import { withRouter } from 'react-router-dom'
@@ -74,7 +75,7 @@ class App extends React.Component {
                 <header className="App-header">
                     <Switch>
                         <Route path="/login" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser} />} />
-                        <Route path="/register" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser} />} />
+                        <Route path="/register" render={() => <RegisterFormContainer handleCurrentUser={this.handleCurrentUser} />} />
                         <Route path="/profile" render={() => <ProfileContainer username={localStorage.username} />} />
                         <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} />} />
                         <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} />} />

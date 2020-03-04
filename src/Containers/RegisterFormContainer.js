@@ -19,19 +19,21 @@ export default class FormContainer extends Component {
     }
     //on submit auth user in backend
 
-    handleLoginSubmit = (logUser) => {
-        logUser.preventDefault()
+    handleRegisterSubmit = (newUser) => {
+        newUser.preventDefault()
         console.log(this.state)
-        fetch(`http://localhost:3000/login`, {
+        fetch(`http://localhost:3000/users`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
             },
             body: JSON.stringify(this.state)
         })
-            .then(r => r.json())
-            .then(this.handleResponse)
+        .then(r => r.json())
+        .then(this.handleResponse)
     }
+
+
 
     //on response set page to profile page
     handleResponse = (response) => {
@@ -57,13 +59,13 @@ export default class FormContainer extends Component {
     
         return (
             <div>
-            <form onSubmit={this.handleLoginSubmit} >
-                <h1>Login</h1>
-                <label htmlFor="username">Username:</label>
-                <input type="text" name="username" value={username} onChange={this.handleChange} />
-                <label htmlFor="password">Password:</label>
-                <input type="password" name="password" value={password} onChange={this.handleChange} />
-                <input type="submit" value="Submit" />
+            <form onSubmit={this.handleRegisterSubmit} >
+              <h1>Register</h1>
+              <label htmlFor="username">Username:</label>
+              <input type="text" name="username" value={username} onChange={this.handleChange} />
+              <label htmlFor="password">Password:</label>
+              <input type="password" name="password" value={password} onChange={this.handleChange} />
+              <input type="submit" value="Submit" />
             </form>
             {
                 this.state.redirect ? 
