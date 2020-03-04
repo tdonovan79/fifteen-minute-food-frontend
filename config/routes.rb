@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :index]
   # login custom route
   post "/login", to: "users#login"
+
+  #order confirmation custom route
+  get "/confirm", to: "sales#last_order"
   
 
   # route to persist a user
