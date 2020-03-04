@@ -7,7 +7,7 @@ export default class RestaurantCard extends React.Component {
     }
 
     handleNav = () => {
-        this.props.selectRest(this.props.restaurant.id)
+        this.props.selectRest(this.props.restaurant.id, this.props.restaurant.name)
         this.setState({
             redirect: true
         })

@@ -25,7 +25,7 @@ export default class RestaurantContainer extends Component {
 
     //fetch restaurant info from yelp api
     componentDidMount() {
-        fetch(`http://localhost:3000/yelp_api_adapter/info?business_id=${this.props.restId}`)
+        fetch(`http://localhost:3000/yelp_api_adapter/info?business_id=${this.props.selectRest.id}`)
             .then(r => r.json())
             .then(data => {
                 this.setState({

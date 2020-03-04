@@ -2,12 +2,14 @@
 import React, { useState } from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 
+
 // => URLs
 const BASE_URL = 'http://localhost:3000'
 const CHARGES_URL = BASE_URL + '/charge_adapter'
 
 // => app component
 export default function Payment(props) {
+    const [redirect, setRidirect ]= useState(false)
 
     const price = props.total
     const onToken = (token) => {
@@ -25,8 +27,10 @@ export default function Payment(props) {
         };
 
         fetch(CHARGES_URL, config)
-        .then(res => res.json())
-        .then(console.log)
+            .then(res => res.json())
+            //redirect to confirmation page after payment is made
+            .then(() =>
+                {props.afterPayment()})
     }
 
     return (

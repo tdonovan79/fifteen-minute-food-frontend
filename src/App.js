@@ -9,6 +9,7 @@ import CheckOutContainer from './Containers/CheckOutContainer.js'
 import RestaurantContainer from './Containers/RestaurantContainer.js'
 import ProfileContainer from './Containers/ProfileContainer.js'
 import SearchContainer from './Components/SearchFiles/SearchContainer.jsx'
+import ConfirmationContainer from './Containers/ConfirmationContainer.js'
 class App extends React.Component {
     state = {
         user: {
@@ -16,7 +17,10 @@ class App extends React.Component {
             id: 0
         },
         token: "",
-        selectedRest: "",
+        selectRest: {
+            id: "",
+            name: ""
+        },
         itemsInCart: []
     }
     //delete item by id passed up from CartItem
@@ -56,15 +60,28 @@ class App extends React.Component {
     }
     
     //change selected restaurant
-    selectRest = newRestId => {
+    selectRest = (newRestId, newRestName) => {
         this.setState({
-            selectedRest: newRestId
+            selectRest: {
+                id: newRestId,
+                name: newRestName
+            }
         })
     }
     //adds item to cart
     addItemToCart = newItem => {
         this.setState({
             itemsInCart: [...this.state.itemsInCart, newItem]
+        })
+    }
+    //wipe cart and seleted restaurants
+    clearCart = () => {
+        this.setState({
+            selectRest: {
+                id: "",
+                name: ""
+            },
+            itemsInCart: []
         })
     }
     render() {
@@ -76,10 +93,11 @@ class App extends React.Component {
                         <Route path="/login" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser} />} />
                         <Route path="/register" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser} />} />
                         <Route path="/profile" render={() => <ProfileContainer username={localStorage.username} />} />
-                        <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} />} />
-                        <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} />} />
+                        <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} selectRest={this.state.selectRest}/>} />
+                        <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} selectRest={this.state.selectRest} clearCart={this.clearCart}/> } />
                         <Route path='/search' render={() => <SearchContainer selectRest={this.selectRest} />} />
-                        <Route path='/restaurant' render={() => <RestaurantContainer restId={this.state.selectedRest} addItemToCart={this.addItemToCart} />} />
+                        <Route path='/restaurant' render={() => <RestaurantContainer selectRest={this.state.selectRest} addItemToCart={this.addItemToCart} />} />
+                        <Route path='/confirmation' render={() => <ConfirmationContainer selectRest={this.state.selectRest} selectRest={this.selectRest} itemsInCart={this.itemsInCart} />} />
                     </Switch>
                 </header>
             </div>
