@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # register a user
-  resources :users, only: [:create]
-  resources :sales, only: [:create]
+  resources :sales, only: [:create, :index]
   resources :food_items, only: [:create]
   resources :restaurants, only: [:create]
+  resources :users, only: [:create, :index]
   # login custom route
   post "/login", to: "users#login"
   

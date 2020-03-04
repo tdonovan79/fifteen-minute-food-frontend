@@ -9,7 +9,8 @@ class Sale < ApplicationRecord
 
     # private
 
-    # def sale_params
-    #     params.permit(:restaurant_id, :user_id)
-    # end
+    def sale_params
+        params.permit(:restaurant_id, :user_id)
+    end
+    
 end

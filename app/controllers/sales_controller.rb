@@ -1,6 +1,12 @@
 class SalesController < ApplicationController
     # before_action 
     # :authorized, only: [:persist]
+   
+  def index
+    sale = Sale.all 
+
+    render json: sale
+  end
 
     def create
         # byebug

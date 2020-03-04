@@ -1,5 +1,5 @@
 class SaleSerializer < ActiveModel::Serializer
-  attributes :restaurant_id, :user_id
+  attributes :restaurant_id, :user_id, :id
 
   belongs_to :user 
   belongs_to :restaurant 
