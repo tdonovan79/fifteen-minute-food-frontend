@@ -2,11 +2,6 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 export default class RestaurantCard extends React.Component {
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 1c641eb8a547545f1406cff8a0b439082720ed51
     state = {
         redirect: false
     }
