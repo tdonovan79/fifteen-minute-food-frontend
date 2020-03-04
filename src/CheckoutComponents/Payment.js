@@ -9,13 +9,7 @@ const CHARGES_URL = BASE_URL + '/charge_adapter'
 // => app component
 export default function Payment(props) {
 
-    // const [price, setPrice] = props.total
     const price = props.total
-
-    // const handlePrice = (event) => {
-    //     setPrice(props.total)
-    // }
-
     const onToken = (token) => {
 
         const charge = {
@@ -37,18 +31,8 @@ export default function Payment(props) {
 
     return (
         <div>
-            {/* <form> */}
-                {/* <p>Price: {price}</p> */}
-                {/* <input
-                    type="number"
-                    value={ price }
-                    // onChange={ handlePrice }
-                />
-            </form> */}
-
             <StripeCheckout
                 token={onToken}
-                // stripeKey={process.env.STRIPE_KEY}
                 stripeKey={'pk_test_IPcPeFrETWjmr9mFIYFwZlqn00nfwg4xZi'}
             />
         </div>

@@ -41,6 +41,7 @@ class App extends React.Component {
     }
     handleResponse = (response) => {
         if (response.user) {
+            localStorage.username = response.user.username
             localStorage.token = response.token
             this.setState(response, () => {
                 this.props.history.push("/profile")
@@ -74,7 +75,7 @@ class App extends React.Component {
                     <Switch>
                         <Route path="/login" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser} />} />
                         <Route path="/register" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser} />} />
-                        <Route path="/profile" render={() => <ProfileContainer username={this.state.username} />} />
+                        <Route path="/profile" render={() => <ProfileContainer username={localStorage.username} />} />
                         <Route path="/cart" render={() => <CartContainer onDeleteItem={this.onDeleteItem} itemsInCart={this.state.itemsInCart} />} />
                         <Route path="/checkout" render={() => <CheckOutContainer itemsInCart={this.state.itemsInCart} />} />
                         <Route path='/search' render={() => <SearchContainer selectRest={this.selectRest} />} />

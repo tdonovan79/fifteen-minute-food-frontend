@@ -54,14 +54,14 @@ export default class FormContainer extends Component {
     handleResponse = (response) => {
         if (response.user) {
             localStorage.token = response.token
-            this.props.handleCurrentUser(this.state.username)
+            localStorage.username = response.user.username
+            this.props.handleCurrentUser(localStorage.username)
             this.setState({
                 username: this.state.username,
                 password: this.state.password,
                 token: response.token,
                 redirect: true
             })
-            console.log(this.state)
         }
         else {
             alert(response.error)
