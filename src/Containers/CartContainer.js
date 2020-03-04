@@ -21,6 +21,7 @@ export default class CartContainer extends Component {
         return (
             <div>
                 <h1>My Cart</h1>
+                <h2>{this.props.selectRest.name}</h2>
                 <div className="cart">
                     {this.props.itemsInCart.map(item => {
                         return <CartItem id={item.id} name={item.name} price={item.price} onDeleteItem={this.props.onDeleteItem} />

@@ -7,11 +7,18 @@ export default class RestaurantCard extends React.Component {
     }
 
     handleNav = () => {
-        this.props.selectRest(this.props.restaurant.id)
+        this.props.selectNewRest(this.props.restaurant.id, 
+            this.props.restaurant.name, 
+            this.props.restaurant.location.city,
+            this.props.restaurant.categories[0].title,
+            this.props.restaurant.phone,
+            this.props.restaurant.location.address1,
+            this.props.restaurant.image_url)
         this.setState({
             redirect: true
         })
     }
+    
 
     render() {
         //fill out with the rest of the restaurant info
@@ -27,7 +34,7 @@ export default class RestaurantCard extends React.Component {
                     <p>{restObj.name}</p>
                 </div>
                 <div className="restaurant-category">
-                    <p>{restObj.categories.title} </p>
+                    <p>{restObj.categories[0].title} </p>
                 </div>
                 <div className="restaurant-price">
                     <p>{restObj.price}</p>
