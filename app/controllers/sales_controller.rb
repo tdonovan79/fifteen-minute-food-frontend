@@ -17,7 +17,6 @@ class SalesController < ApplicationController
                 @sale = Sale.create(user: @user, restaurant: @restaurant)
 
                 params[:items].each do |item| 
-                    byebug
                     FoodItem.create(name: item[:name], price: item[:price], sale: @sale)
                 end
                 
