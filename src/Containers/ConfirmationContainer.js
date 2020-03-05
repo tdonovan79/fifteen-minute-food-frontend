@@ -21,6 +21,7 @@ export default class ConfirmationContainer extends Component {
     }
 
     render() {
+        // console.log(this.state.restaurant)
         let foodOrder = this.state.food
         return (
             <div>
