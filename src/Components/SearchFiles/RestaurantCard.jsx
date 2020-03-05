@@ -48,16 +48,10 @@ export default class RestaurantCard extends React.Component {
                     <p>{restObj.location.address1}</p>
                 </div>
                 <div className="restaurant-rating">
-                    <p>{restObj.rating}</p>
-                </div>
-                <div className="restaurant-review-count">
-                    <p>{restObj.review_count}</p>
+                    <p>Rating: {restObj.rating}</p>
                 </div>
                 <div className="restaurant-phone">
                     <p>{restObj.display_phone}</p>
-                </div>
-                <div className="restaurant-transactions">
-                    <p>{restObj.transactions}</p>
                 </div>
                 <div className="restaurant-boolean">
                     {restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <button onClick={this.handleNav}>Go to Restaurant</button>}
