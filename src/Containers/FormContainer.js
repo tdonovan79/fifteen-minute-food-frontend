@@ -21,7 +21,6 @@ export default class FormContainer extends Component {
 
     handleLoginSubmit = (logUser) => {
         logUser.preventDefault()
-        console.log(this.state)
         fetch(`http://localhost:3000/login`, {
             method: "POST",
             headers: {

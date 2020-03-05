@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CartItem from '../CartComponents/CartItem.js'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export default class CartContainer extends Component {
     state = {
@@ -18,21 +18,30 @@ export default class CartContainer extends Component {
 
 
     render() {
+        console.log(this.props.itemsInCart)
         return (
             <div>
                 <h1>My Cart</h1>
-                <h2>{this.props.selectRest.name}</h2>
-                <div className="cart">
-                    {this.props.itemsInCart.map(item => {
-                        return <CartItem id={item.id} name={item.name} price={item.price} onDeleteItem={this.props.onDeleteItem} />
-                    })}
-                </div>
-                <div className="totals">
-                    <p>Subtotal: ${this.findSubtotal()}</p>
-                    <p>Tax: 8.875%</p>
-                    <p>Total: ${this.findTotal()}</p>
-                </div>
-                <NavLink to="/checkout">Checkout</NavLink>
+                {
+                    this.props.itemsInCart.length !== 0 ?
+                        <div>
+                            <h2>{this.props.selectRest.name}</h2>
+                            <div className="cart">
+                                {this.props.itemsInCart.map(item => {
+                                    return <CartItem id={item.id} name={item.name} price={item.price} onDeleteItem={this.props.onDeleteItem} />
+                                })}
+                            </div>
+                            <div className="totals">
+                                <p>Subtotal: ${this.findSubtotal()}</p>
+                                <p>Tax: 8.875%</p>
+                                <p>Total: ${this.findTotal()}</p>
+                            </div>
+
+                            <NavLink to="/checkout">Checkout</NavLink>
+                        </div>
+                        :
+                        <p>Cart is empty.</p>
+                }
             </div>
         )
     }

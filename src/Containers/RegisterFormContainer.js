@@ -21,7 +21,6 @@ export default class FormContainer extends Component {
 
     handleRegisterSubmit = (newUser) => {
         newUser.preventDefault()
-        console.log(this.state)
         fetch(`http://localhost:3000/users`, {
             method: "POST",
             headers: {
