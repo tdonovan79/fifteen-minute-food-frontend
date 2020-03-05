@@ -31,30 +31,34 @@ export default class RestaurantCard extends React.Component {
         let restObj = this.props.restaurant
         return (
             <div className="card-container" >
+                <div className="top-card">
+                    <div>
+                        <img src={restObj.image_url} alt={restObj.name} />
+                    </div>
 
-                <div className="image">
-                    <img src={restObj.image_url} alt={restObj.name} />
+                    <div>
+                        <p>{restObj.name}</p><br />
+                    </div>
+                    <div>
+                        <p>{restObj.categories[0].title} </p>
+                    </div>
+                    <div>
+                        <p>{restObj.price}</p><br />
+                    </div>
                 </div>
-                <div className="restaurant-name">
-                    <p>{restObj.name}</p>
-                </div>
-                <div className="restaurant-category">
-                    <p>{restObj.categories[0].title} </p>
-                </div>
-                <div className="restaurant-price">
-                    <p>{restObj.price}</p>
-                </div>
-                <div className="restaurant-location">
-                    <p>{restObj.location.address1}</p>
-                </div>
-                <div className="restaurant-rating">
-                    <p>Rating: {restObj.rating}</p>
-                </div>
-                <div className="restaurant-phone">
-                    <p>{restObj.display_phone}</p>
-                </div>
-                <div className="restaurant-boolean">
-                    {restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <button onClick={this.handleNav}>Go to Restaurant</button>}
+                <div className="bottom-card">
+                    <div>
+                        <p>{restObj.location.address1}</p><br />
+                    </div>
+                    <div>
+                        <p>Rating: {restObj.rating}</p><br />
+                    </div>
+                    <div>
+                        <p>{restObj.display_phone}</p><br />
+                    </div>
+                    <div>
+                        {restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <button onClick={this.handleNav}>Go to Restaurant</button>}
+                    </div>
                 </div>
                 {
                     this.state.redirect ?

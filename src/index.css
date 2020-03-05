@@ -46,3 +46,32 @@ ul {
   padding-right: 75px;
 }
 
+<<<<<<< HEAD
+=======
+.container > * {
+  /* display: inline-block; */
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-areas: "image first second";
+}
+
+.card-container  img {
+  height: 130px;
+  width: 130px;
+  grid-area: image;
+  float:left;
+}
+
+.card-container .top-card {
+  grid-area: first;
+  display: inline-block;
+}
+
+.card-container .bottom-card {
+  grid-area: second;
+  display: inline-block;
+}
+>>>>>>> d772ed4a1a9a7b9d6726318b0005c56f0f76e30b
