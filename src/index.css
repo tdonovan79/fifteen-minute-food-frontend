@@ -94,3 +94,9 @@ ul {
   border: dashed;
   padding-top: 10px;
 }
+
+.confirmation-food {
+  font-size: large;
+  font-weight: bold;
+  padding-right: 40px;
+}
