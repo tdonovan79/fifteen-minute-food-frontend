@@ -1,11 +1,50 @@
 import React from 'react';
 
-export default class Profile extends React.Component{
+export default class Profile extends React.Component {
 
-  render(){
-    console.log(this.props)
+  state = {
+    sales: []
+  }
+
+  componentDidMount() {
+    fetch(`http://localhost:3000/userSales`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        username: this.props.username
+      })
+    })
+      .then(r => r.json())
+      .then(purchases => this.setState({
+        sales: purchases
+      }))
+  }
+
+
+
+  render() {
+    console.log(this.state.sales)
     return (
-      <h1>Hello, {this.props.username}!</h1>
+      <div>
+        <h1>Hello, {this.props.username}!</h1>
+        <h3>Past Orders: </h3>
+        <ul>
+          {this.state.sales.map(sale => {
+            return <li>
+              {sale.restaurant.name}
+              {sale.created_at}
+              <ul>
+                {sale.food_items.map(item => {
+                  return <li>
+                    {item.name}
+                  </li>
+                })}</ul></li>
+          })}
+        </ul>
+      </div>
     )
   }
 }
+

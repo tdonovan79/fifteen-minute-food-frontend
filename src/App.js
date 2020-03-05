@@ -51,6 +51,7 @@ class App extends React.Component {
                 .then(this.handleResponse)
         }
     }
+
     handleResponse = (response) => {
         if (response.user) {
             localStorage.username = response.user.username
@@ -102,6 +103,8 @@ class App extends React.Component {
             itemsInCart: []
         })
     }
+
+
     render() {
         return (
             <div className="App">
