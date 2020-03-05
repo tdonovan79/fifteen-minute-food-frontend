@@ -37,7 +37,7 @@ export default class RestaurantContainer extends Component {
     render() {
         console.log("menu", menu)
         return (
-            <div>
+            <div className="container">
                 <div className="image">
                     <img src={this.state.restObj.image_url} alt={this.state.restObj.name} />
                 </div>

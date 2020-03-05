@@ -1,13 +1,43 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+  color: #777;
+  display: grid;
+  grid-template-rows: 15% auto;
+  grid-template-areas: 
+  "nav"
+  "main";
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.nav {
+  grid-area: nav;
+  background-color: red;
+  height: 45px;
+}
+
+.nav > li {
+  display: inline;
+  margin: 85px;
+  
+}
+
+.navLink {
+  color: white;
+  font-weight: 400;
+  font-size: x-large;
+}
+
+/*get rid of bullet points on lists */
+ul {
+  list-style-type: none;
+}
+
+.container {
+  text-align: center;
+}
+
+.container > * {
+  /* display: inline-block; */
 }

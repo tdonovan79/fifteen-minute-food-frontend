@@ -52,7 +52,7 @@ export default class CheckOutContainer extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="container">
                 <h1>Checkout</h1>
                 <h2>{this.props.selectRest.name}</h2>
                 <div className="totals">

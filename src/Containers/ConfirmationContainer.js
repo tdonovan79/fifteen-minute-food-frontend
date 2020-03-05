@@ -24,7 +24,7 @@ export default class ConfirmationContainer extends Component {
         // console.log(this.state.restaurant)
         let foodOrder = this.state.food
         return (
-            <div>
+            <div className="container">
                 <h1>Thank you {localStorage.username}!</h1>
                 <h2>for your order of</h2>
                 <ul>{foodOrder.map(food => {

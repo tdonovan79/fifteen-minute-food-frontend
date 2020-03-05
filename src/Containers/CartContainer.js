@@ -20,7 +20,7 @@ export default class CartContainer extends Component {
     render() {
         console.log(this.props.itemsInCart)
         return (
-            <div>
+            <div className="container">
                 <h1>My Cart</h1>
                 {
                     this.props.itemsInCart.length !== 0 ?

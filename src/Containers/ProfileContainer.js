@@ -27,7 +27,7 @@ export default class Profile extends React.Component {
   render() {
     console.log(this.state.sales)
     return (
-      <div>
+      <div className="container">
         <h1>Hello, {this.props.username}!</h1>
         <h3>Past Orders: </h3>
         <ul>
