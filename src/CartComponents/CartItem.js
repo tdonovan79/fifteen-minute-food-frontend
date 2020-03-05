@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class CartItem extends Component {
     onDeleteClick = () => {
-        this.props.onDeleteItem(this.props.id)
+        this.props.onDeleteItem(this.props.name)
     }
 
 

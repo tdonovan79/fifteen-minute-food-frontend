@@ -7,23 +7,28 @@ export default class RestaurantCard extends React.Component {
     }
 
     handleNav = () => {
-        this.props.selectNewRest(this.props.restaurant.id, 
-            this.props.restaurant.name, 
-            this.props.restaurant.location.city,
-            this.props.restaurant.categories[0].title,
-            this.props.restaurant.phone,
-            this.props.restaurant.location.address1,
-            this.props.restaurant.image_url)
-        this.setState({
-            redirect: true
-        })
+        if (!this.props.cartIsEmpty && this.props.restaurant.name !== this.props.selectRestName) {
+            alert("Please place your order or empty your cart!")
+        }
+        else {
+            this.props.selectNewRest(this.props.restaurant.id,
+                this.props.restaurant.name,
+                this.props.restaurant.location.city,
+                this.props.restaurant.categories[0].title,
+                this.props.restaurant.phone,
+                this.props.restaurant.location.address1,
+                this.props.restaurant.image_url)
+            this.setState({
+                redirect: true
+            })
+        }
+
     }
-    
+
 
     render() {
         //fill out with the rest of the restaurant info
         let restObj = this.props.restaurant
-        
         return (
             <div className="card-container" >
 
@@ -43,19 +48,13 @@ export default class RestaurantCard extends React.Component {
                     <p>{restObj.location.address1}</p>
                 </div>
                 <div className="restaurant-rating">
-                    <p>{restObj.rating}</p>
-                </div>
-                <div className="restaurant-review-count">
-                    <p>{restObj.review_count}</p>
+                    <p>Rating: {restObj.rating}</p>
                 </div>
                 <div className="restaurant-phone">
                     <p>{restObj.display_phone}</p>
                 </div>
-                <div className="restaurant-transactions">
-                    <p>{restObj.transactions}</p>
-                </div>
                 <div className="restaurant-boolean">
-                    <p>{restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <h2>OPEN</h2>}</p>
+                    {restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <button onClick={this.handleNav}>Go to Restaurant</button>}
                 </div>
                 {
                     this.state.redirect ?
@@ -63,7 +62,6 @@ export default class RestaurantCard extends React.Component {
                         :
                         <p></p>
                 }
-                <button onClick={this.handleNav}>Go to Restaurant</button>
 
             </div>
         )
