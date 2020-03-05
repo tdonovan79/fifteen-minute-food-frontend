@@ -9,7 +9,7 @@ export default class RestaurantCollection extends React.Component {
         })
         
         return (
-            <div  className="container">
+            <div  className="container" id="restaurant-container">
                 {arrayOfRestaurants}
             </div>
         )
