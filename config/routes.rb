@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   #order confirmation custom route
   get "/confirm", to: "sales#last_order"
+
+  put "/userSales", to: "sales#userSales"
   
 
   # route to persist a user

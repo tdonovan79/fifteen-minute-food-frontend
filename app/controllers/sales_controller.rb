@@ -35,6 +35,14 @@ class SalesController < ApplicationController
     end
 
 
+
+  def userSales
+    @user = User.find_by(username: params[:username])
+
+    render json: @user.sales
+  end 
+
+
     def last_order
         sale = Sale.last 
 
