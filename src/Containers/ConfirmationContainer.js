@@ -14,6 +14,7 @@ export default class ConfirmationContainer extends Component {
         fetch("http://localhost:3000/confirm")
         .then(r => r.json())
         .then(order => {
+            
             this.setState({
                 user: order.user.username,
                 restaurant: order.restaurant.name,
@@ -23,7 +24,9 @@ export default class ConfirmationContainer extends Component {
     }
 
     render() {
+        // console.log(this.state.restaurant)
         let foodOrder = this.state.food
+        
         // foodOrder.map(food => {
         //     return <li>{food.name}</li>
         // })
