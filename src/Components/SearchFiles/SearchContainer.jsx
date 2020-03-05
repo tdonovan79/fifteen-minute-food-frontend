@@ -15,8 +15,6 @@ export default class SearchContainer extends React.Component {
         this.setState({
             searchTerm: string
         })
-
-
     }
     //perform search through yelp api
     handleSearch = () => {
@@ -28,6 +26,7 @@ export default class SearchContainer extends React.Component {
                     restaurants: data
                 })
             });
+            console.log(this.state)
     }
 
 
