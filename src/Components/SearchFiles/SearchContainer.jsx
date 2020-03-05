@@ -10,13 +10,18 @@ export default class SearchContainer extends React.Component {
         restaurants: [],
     }
 
-
-    handleSearch = (string) => {
+    //set state when search input changes
+    handleSearchTerm = (string) => {
         this.setState({
             searchTerm: string
         })
 
-        fetch(`http://localhost:3000/yelp_api_adapter/search?term=${string}`)
+
+    }
+    //perform search through yelp api
+    handleSearch = () => {
+        const search = this.state.searchTerm
+        fetch(`http://localhost:3000/yelp_api_adapter/search?term=${search}`)
             .then(r => r.json())
             .then(data => {
                 this.setState({
@@ -26,13 +31,11 @@ export default class SearchContainer extends React.Component {
     }
 
 
-
     render() {
         return (
             <div className="search-container">
-                <Search searchTerm={this.state.searchTerm} handleSearch={this.handleSearch} />
-                <RestaurantCollection restaurants={this.state.restaurants} selectNewRest={this.props.selectNewRest} cartIsEmpty={this.props.cartIsEmpty} selectRestName={this.props.selectRestName}/>
-                {/* <RestaurantCard restaurants={this.props.restaurants}/> */}
+                <Search searchTerm={this.state.searchTerm} handleSearchTerm={this.handleSearchTerm} handleSearch={this.handleSearch}/>
+                <RestaurantCollection restaurants={this.state.restaurants} selectNewRest={this.props.selectNewRest} cartIsEmpty={this.props.cartIsEmpty} selectRestName={this.props.selectRestName} />
             </div>
 
         )
