@@ -6,7 +6,10 @@ class Sale < ApplicationRecord
     # def create_sale
     #     Sale.create(sales_params)
     # end
-
+    def nice_timestamp_for_grandma
+        self.created_at.strftime("Ordered on %A, %B %e, %Y, %I:%M%p")
+    end
+    
     # private
 
     def sale_params

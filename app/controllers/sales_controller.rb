@@ -9,7 +9,6 @@ class SalesController < ApplicationController
     end
 
     def create
-        # byebug
         if User.all.find_by(username: sale_params[:user])
             @user = User.all.find_by(username: sale_params[:user])
             if  Restaurant.all.find_by(address: sale_params[:restaurant][:address])
