@@ -34,7 +34,7 @@ export default class Profile extends React.Component {
           {this.state.sales.map(sale => {
             return <li>
               {sale.restaurant.name}
-               - 
+                -- {" "}
               {sale.nice_timestamp_for_grandma}
               <ul>
                 {sale.food_items.map(item => {

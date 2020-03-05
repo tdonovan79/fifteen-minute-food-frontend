@@ -7,9 +7,9 @@ export default class MenuItem extends Component {
     }
     render() {
         return (
-            <div>
-                <h6>{this.props.name}</h6>
-                <p>{this.props.price}</p>
+            <div className="restaurant_name">
+                <h6 className="food_name">{this.props.name}</h6>
+                <p className="price">${this.props.price}</p>
                 <button onClick={this.handleClick}>Add to Cart</button>
             </div>
         )

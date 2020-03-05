@@ -3,6 +3,8 @@ import {NavLink} from 'react-router-dom'
 
 const NavBar = () => {
   return(
+    <div className="title">
+      Fifteen Minute Foods 
     <ul className="nav">
       <li>
         <NavLink to="/cart" className="navLink">Cart</NavLink>
@@ -20,6 +22,7 @@ const NavBar = () => {
         <NavLink to="/search" className="navLink">Search</NavLink>
       </li>
     </ul>
+    </div>
   )
 };
 

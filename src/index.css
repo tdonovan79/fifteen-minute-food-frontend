@@ -46,32 +46,51 @@ ul {
   padding-right: 75px;
 }
 
-<<<<<<< HEAD
-=======
 .container > * {
   /* display: inline-block; */
 }
 
 .card-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 33% 33% 33%;
   grid-template-areas: "image first second";
 }
 
 .card-container  img {
-  height: 130px;
-  width: 130px;
+  height: 250px;
+  width: 300px;
+}
+
+.card-container .rest-img{
   grid-area: image;
-  float:left;
 }
 
 .card-container .top-card {
   grid-area: first;
   display: inline-block;
+  padding-top: 30px;
+  font-weight: bold;
 }
 
 .card-container .bottom-card {
   grid-area: second;
   display: inline-block;
+  padding-top: 30px;
 }
->>>>>>> d772ed4a1a9a7b9d6726318b0005c56f0f76e30b
+
+.food_name {
+  font-weight: heavy;
+  font-size: 150%;
+}
+
+.price {
+  font-size: 150%;
+}
+
+.title{
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+  border: dashed;
+  padding-top: 10px;
+}

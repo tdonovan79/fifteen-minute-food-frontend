@@ -31,30 +31,30 @@ export default class RestaurantCard extends React.Component {
         let restObj = this.props.restaurant
         return (
             <div className="card-container" >
-                <div className="top-card">
-                    <div>
+                <div className="rest-img">
                         <img src={restObj.image_url} alt={restObj.name} />
-                    </div>
-
+                </div>
+                <div className="top-card">
+                
                     <div>
-                        <p>{restObj.name}</p><br />
+                        <p>{restObj.name}</p>
                     </div>
                     <div>
                         <p>{restObj.categories[0].title} </p>
                     </div>
                     <div>
-                        <p>{restObj.price}</p><br />
+                        <p>{restObj.price}</p>
                     </div>
                 </div>
                 <div className="bottom-card">
                     <div>
-                        <p>{restObj.location.address1}</p><br />
+                        <p>{restObj.location.address1}</p>
                     </div>
                     <div>
-                        <p>Rating: {restObj.rating}</p><br />
+                        <p>Rating: {restObj.rating}</p>
                     </div>
                     <div>
-                        <p>{restObj.display_phone}</p><br />
+                        <p>{restObj.display_phone}</p>
                     </div>
                     <div>
                         {restObj.is_closed ? <h2>HAHA WE CLOSED</h2> : <button onClick={this.handleNav}>Go to Restaurant</button>}
@@ -64,7 +64,7 @@ export default class RestaurantCard extends React.Component {
                     this.state.redirect ?
                         <Redirect push to='/restaurant' />
                         :
-                        <p></p>
+                        <></>
                 }
 
             </div>
