@@ -57,7 +57,7 @@ export default class FormContainer extends Component {
         let { username, password } = this.state
     
         return (
-            <div>
+            <div className="container">
             <form onSubmit={this.handleRegisterSubmit} >
               <h1>Register</h1>
               <label htmlFor="username">Username:</label>

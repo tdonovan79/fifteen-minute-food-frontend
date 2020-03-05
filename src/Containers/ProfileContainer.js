@@ -38,8 +38,8 @@ export default class Profile extends React.Component {
               {sale.nice_timestamp_for_grandma}
               <ul>
                 {sale.food_items.map(item => {
-                  return <li>
-                    {item.name}
+                  return <li className="past_order_list">
+                    Item: {item.name}
                   </li>
                 })}</ul></li>
           })}
