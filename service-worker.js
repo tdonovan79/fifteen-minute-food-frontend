@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/fifteen-minute-food-frontend/precache-manifest.0f8d0b08ca2e9032911199d9c96555e2.js"
+  "/fifteen-minute-food-frontend/precache-manifest.2ba552d791591bbf5b57f096a54d3f86.js"
 );
 
 self.addEventListener('message', (event) => {
