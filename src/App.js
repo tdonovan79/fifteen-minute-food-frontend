@@ -111,7 +111,6 @@ class App extends React.Component {
                 <NavBar />
                 <header className="App-header">
                     <Switch>
-                        <Route path="/" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser} />} />
                         <Route path="/login" render={() => <FormContainer handleCurrentUser={this.handleCurrentUser} />} />
                         <Route path="/register" render={() => <RegisterFormContainer handleCurrentUser={this.handleCurrentUser} />} />
                         <Route path="/profile" render={() => <ProfileContainer username={localStorage.username} />} />
