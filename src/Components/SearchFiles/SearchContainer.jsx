@@ -19,7 +19,7 @@ export default class SearchContainer extends React.Component {
     //perform search through yelp api
     handleSearch = () => {
         const search = this.state.searchTerm
-        fetch(`http://localhost:3000/yelp_api_adapter/search?term=${search}`)
+        fetch(`https://fifteenminute-api.herokuapp.com/yelp_api_adapter/search?term=${search}`)
             .then(r => r.json())
             .then(data => {
                 this.setState({

@@ -10,7 +10,7 @@ export default class ConfirmationContainer extends Component {
 
 
     componentDidMount() {
-        fetch("http://localhost:3000/confirm")
+        fetch("https://fifteenminute-api.herokuapp.com/confirm")
             .then(r => r.json())
             .then(order => {
                 this.setState({

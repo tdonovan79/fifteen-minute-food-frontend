@@ -21,7 +21,7 @@ export default class FormContainer extends Component {
 
     handleRegisterSubmit = (newUser) => {
         newUser.preventDefault()
-        fetch(`http://localhost:3000/users`, {
+        fetch(`https://fifteenminute-api.herokuapp.com/users`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

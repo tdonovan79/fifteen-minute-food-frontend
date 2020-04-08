@@ -4,7 +4,7 @@ import StripeCheckout from 'react-stripe-checkout';
 
 
 // => URLs
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://fifteenminute-api.herokuapp.com'
 const CHARGES_URL = BASE_URL + '/charge_adapter'
 
 // => app component

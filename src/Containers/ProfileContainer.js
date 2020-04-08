@@ -7,7 +7,7 @@ export default class Profile extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/userSales`, {
+    fetch(`https://fifteenminute-api.herokuapp.com/userSales`, {
       method: "PUT",
       headers: {
         "content-type": "application/json"

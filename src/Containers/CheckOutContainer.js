@@ -30,7 +30,7 @@ export default class CheckOutContainer extends Component {
             user: localStorage.username
         }
         //fetches
-        fetch('http://localhost:3000/sales', {
+        fetch('https://fifteenminute-api.herokuapp.com/sales', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

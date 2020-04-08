@@ -21,7 +21,7 @@ export default class FormContainer extends Component {
 
     handleLoginSubmit = (logUser) => {
         logUser.preventDefault()
-        fetch(`http://localhost:3000/login`, {
+        fetch(`https://fifteenminute-api.herokuapp.com/login`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -47,7 +47,7 @@ export default class FormContainer extends Component {
         }
         else {
             alert(response.error)
-          }
+        }
     }
 
     render() {
