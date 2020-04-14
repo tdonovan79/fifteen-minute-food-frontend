@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/fifteen-minute-food-frontend/static/css/main.c96f7d91.chunk.css",
-    "main.js": "/fifteen-minute-food-frontend/static/js/main.e73dbfaa.chunk.js",
-    "main.js.map": "/fifteen-minute-food-frontend/static/js/main.e73dbfaa.chunk.js.map",
+    "main.js": "/fifteen-minute-food-frontend/static/js/main.0a928049.chunk.js",
+    "main.js.map": "/fifteen-minute-food-frontend/static/js/main.0a928049.chunk.js.map",
     "runtime-main.js": "/fifteen-minute-food-frontend/static/js/runtime-main.51087aae.js",
     "runtime-main.js.map": "/fifteen-minute-food-frontend/static/js/runtime-main.51087aae.js.map",
     "static/js/2.f094b3f4.chunk.js": "/fifteen-minute-food-frontend/static/js/2.f094b3f4.chunk.js",
     "static/js/2.f094b3f4.chunk.js.map": "/fifteen-minute-food-frontend/static/js/2.f094b3f4.chunk.js.map",
     "index.html": "/fifteen-minute-food-frontend/index.html",
-    "precache-manifest.2ba552d791591bbf5b57f096a54d3f86.js": "/fifteen-minute-food-frontend/precache-manifest.2ba552d791591bbf5b57f096a54d3f86.js",
+    "precache-manifest.ed0af9f75c53905dcf44bd54bf5a1d61.js": "/fifteen-minute-food-frontend/precache-manifest.ed0af9f75c53905dcf44bd54bf5a1d61.js",
     "service-worker.js": "/fifteen-minute-food-frontend/service-worker.js",
     "static/css/main.c96f7d91.chunk.css.map": "/fifteen-minute-food-frontend/static/css/main.c96f7d91.chunk.css.map",
     "static/js/2.f094b3f4.chunk.js.LICENSE.txt": "/fifteen-minute-food-frontend/static/js/2.f094b3f4.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.51087aae.js",
     "static/js/2.f094b3f4.chunk.js",
     "static/css/main.c96f7d91.chunk.css",
-    "static/js/main.e73dbfaa.chunk.js"
+    "static/js/main.0a928049.chunk.js"
   ]
 }

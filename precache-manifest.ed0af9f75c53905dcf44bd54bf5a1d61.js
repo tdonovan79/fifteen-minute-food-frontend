@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a012032611524eae44eedaeb66cc35a3",
+    "revision": "f2d924a3a516f96b51747d14f8e8bb95",
     "url": "/fifteen-minute-food-frontend/index.html"
   },
   {
-    "revision": "9ddb186a30b7d28a7bda",
+    "revision": "9bc534cdc1cbba984aa1",
     "url": "/fifteen-minute-food-frontend/static/css/main.c96f7d91.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifteen-minute-food-frontend/static/js/2.f094b3f4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9ddb186a30b7d28a7bda",
-    "url": "/fifteen-minute-food-frontend/static/js/main.e73dbfaa.chunk.js"
+    "revision": "9bc534cdc1cbba984aa1",
+    "url": "/fifteen-minute-food-frontend/static/js/main.0a928049.chunk.js"
   },
   {
     "revision": "0874a11f08a95bc36e4d",
