@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 const NavBar = () => {
   return(
     <div className="title">
-      Fifteen Minute Foods 
+      Fifteen Minute Food 
     <ul className="nav">
       <li>
         <NavLink to="/cart" className="navLink">Cart</NavLink>
