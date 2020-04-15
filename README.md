@@ -3,7 +3,8 @@
 Fifteen Minute Food is a food delivery app that allows users to search for restaurants in the New York City area and place orders for food.
 
 [Back End Github](https://github.com/tdonovan79/fifteen_min_backend)<br/>
-[Live App](https://tdonovan79.github.io/fifteen-minute-food-frontend/)
+[Live App](https://tdonovan79.github.io/fifteen-minute-food-frontend/)<br/>
+[Video Demo](https://youtu.be/t-kFVgMSrgk)
 
 ## Features
   1. Login and user authentication - New users can be registered on the registration page, as well as users being logged in through the login page. The log in is authorized through theuse of tokens, and the userwill stay logged in (even ifthe page is closed and reopened) until a another user's credentials are entered.
